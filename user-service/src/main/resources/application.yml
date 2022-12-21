@@ -4,12 +4,21 @@ server:
 spring:
   application:
     name: user-service
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
 
 eureka:
   client:
     instance:
       instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
     service-url: 
       defaultZone: http://localhost:8761/eureka
+
+greeting:
+  message: Welcome to the simple e-commerce service
